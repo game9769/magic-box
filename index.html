@@ -85,7 +85,7 @@
             const newWindow = window.open(url, '_blank');
             if (newWindow) {
                 newWindow.onload = () => {
-                    addBackButton(newWindow, title);
+                    addBackButton(newWindow);
                 };
             } else {
                 alert('弹出窗口被阻止，请允许弹出窗口。');
@@ -96,7 +96,7 @@
             alert("宝宝再等待一下哦～ 我正在开发更多有意思的工具给你呢！如果你有什么想要的功能或者灵感也可以和我说一声，我们一起加油吧！ 😊💖🌟");
         }
 
-        function addBackButton(newWindow, title) {
+        function addBackButton(newWindow) {
             const backButton = document.createElement('button');
             backButton.innerText = '返回百宝箱';
             backButton.style.position = 'fixed';
@@ -116,6 +116,32 @@
 
             // Ensure the button is added to the new window's body
             newWindow.document.body.appendChild(backButton);
+
+            // Add a CSS style to ensure the button is always on top
+            const style = document.createElement('style');
+            style.innerHTML = `
+                .back-button {
+                    position: fixed;
+                    top: 10px;
+                    left: 10px;
+                    padding: 10px 20px;
+                    font-size: 16px;
+                    color: white;
+                    background-color: #ff69b4;
+                    border: none;
+                    border-radius: 5px;
+                    cursor: pointer;
+                    z-index: 1000;
+                    transition: background-color 0.3s ease, transform 0.2s ease;
+                }
+                .back-button:hover {
+                    background-color: #ff1493;
+                    transform: scale(1.05);
+                }
+            `;
+            newWindow.document.head.appendChild(style);
+
+            backButton.classList.add('back-button');
         }
     </script>
 </body>
