@@ -88,13 +88,13 @@
 </head>
 <body>
     <div class="toolbox">
-        <h1>蕾蕾的百宝箱 🎁🎀</h1>
+        <h1>🎀 蕾蕾的百宝箱 🎁</h1>
         <ul class="tool-list">
             <li class="tool-item">
                 <button class="tool-button" onclick="openTool('https://game9769.github.io/matchmaker/', '蕾蕾小红娘')">蕾蕾小红娘 🌹💕💖</button>
             </li>
             <li class="tool-item">
-                <button class="tool-button" onclick="openTool('https://game9769.github.io/choose/', '蕾蕾的智能选择助手')">蕾蕾的智能选择助手 👩‍💻🔍💡</button>
+                <button class="tool-button" onclick="openTool('https://game9769.github.io/choose/', '蕾蕾选择器')">蕾蕾选择器 👩‍💻🔍💡</button>
             </li>
             <li class="tool-item">
                 <button class="tool-button" onclick="showComingSoon()">敬请期待 ✨🔮🌟</button>
@@ -119,6 +119,7 @@
         }
 
         function addBackButton(newWindow) {
+            // Create the back button
             const backButton = document.createElement('button');
             backButton.innerText = '返回百宝箱';
             backButton.style.position = 'fixed';
@@ -160,30 +161,27 @@
                     background-color: #ff1493;
                     transform: scale(1.05);
                 }
+                /* Add decorative emojis around the back button */
+                .back-button::before {
+                    content: '🌸';
+                    position: absolute;
+                    top: -10px;
+                    left: -10px;
+                    font-size: 20px;
+                    color: #ff69b4;
+                }
+                .back-button::after {
+                    content: '🌹';
+                    position: absolute;
+                    bottom: -10px;
+                    right: -10px;
+                    font-size: 20px;
+                    color: #ff69b4;
+                }
             `;
             newWindow.document.head.appendChild(style);
 
             backButton.classList.add('back-button');
-
-            // Add decorative emojis around the back button
-            const emojiBefore = document.createElement('span');
-            emojiBefore.innerText = '🌸';
-            emojiBefore.style.position = 'absolute';
-            emojiBefore.style.top = '-10px';
-            emojiBefore.style.left = '-10px';
-            emojiBefore.style.fontSize = '20px';
-            emojiBefore.style.color = '#ff69b4';
-
-            const emojiAfter = document.createElement('span');
-            emojiAfter.innerText = '🌹';
-            emojiAfter.style.position = 'absolute';
-            emojiAfter.style.bottom = '-10px';
-            emojiAfter.style.right = '-10px';
-            emojiAfter.style.fontSize = '20px';
-            emojiAfter.style.color = '#ff69b4';
-
-            backButton.appendChild(emojiBefore);
-            backButton.appendChild(emojiAfter);
         }
     </script>
 </body>
