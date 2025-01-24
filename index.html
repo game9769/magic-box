@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>蕾蕾的百宝箱</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8e9fb;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .toolbox {
+            text-align: center;
+            background-color: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 400px;
+        }
+        .toolbox h1 {
+            color: #ff69b4;
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+        .tool-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        .tool-item {
+            margin-bottom: 15px;
+        }
+        .tool-button {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            font-size: 18px;
+            color: white;
+            background-color: #ff69b4;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        .tool-button:hover {
+            background-color: #ff1493;
+            transform: scale(1.05);
+        }
+        @media (max-width: 480px) {
+            .toolbox {
+                padding: 15px;
+            }
+            .toolbox h1 {
+                font-size: 1.8em;
+            }
+            .tool-button {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="toolbox">
+        <h1>蕾蕾的百宝箱 🎁</h1>
+        <ul class="tool-list">
+            <li class="tool-item">
+                <button class="tool-button" onclick="openTool('https://game9769.github.io/matchmaker/', '蕾蕾小红娘')">蕾蕾小红娘 🌹💕</button>
+            </li>
+            <li class="tool-item">
+                <button class="tool-button" onclick="openTool('https://game9769.github.io/choose/', '蕾蕾的智能选择助手')">蕾蕾的智能选择助手 👩‍💻🔍</button>
+            </li>
+            <li class="tool-item">
+                <button class="tool-button" onclick="showComingSoon()">敬请期待 ✨🔮</button>
+            </li>
+        </ul>
+    </div>
+
+    <script>
+        function openTool(url, title) {
+            const newWindow = window.open(url, '_blank');
+            if (newWindow) {
+                newWindow.onload = () => {
+                    addBackButton(newWindow, title);
+                };
+            } else {
+                alert('弹出窗口被阻止，请允许弹出窗口。');
+            }
+        }
+
+        function showComingSoon() {
+            alert("宝宝再等待一下哦～ 我正在开发更多有意思的工具给你呢！如果你有什么想要的功能或者灵感也可以和我说一声，我们一起加油吧！ 😊💖🌟");
+        }
+
+        function addBackButton(newWindow, title) {
+            const backButton = document.createElement('button');
+            backButton.innerText = '返回百宝箱';
+            backButton.style.position = 'fixed';
+            backButton.style.top = '10px';
+            backButton.style.left = '10px';
+            backButton.style.padding = '10px 20px';
+            backButton.style.fontSize = '16px';
+            backButton.style.color = 'white';
+            backButton.style.backgroundColor = '#ff69b4';
+            backButton.style.border = 'none';
+            backButton.style.borderRadius = '5px';
+            backButton.style.cursor = 'pointer';
+            backButton.style.zIndex = '1000';
+            backButton.addEventListener('click', () => {
+                newWindow.close();
+            });
+
+            // Ensure the button is added to the new window's body
+            newWindow.document.body.appendChild(backButton);
+        }
+    </script>
+</body>
+</html>
+
+
+
